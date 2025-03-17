@@ -1,0 +1,6 @@
+@import "./variables.scss";
+
+@mixin font-style($size: "medium", $weight: "regular") {
+    font-size: map-get($font-sizes, $size);
+    font-weight: map-get($font-weights, $weight);
+  }

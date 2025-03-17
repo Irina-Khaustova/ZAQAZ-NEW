@@ -1,0 +1,32 @@
+.authorization {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+
+  &__main {
+    width: 72%;
+  }
+
+  &__header {
+    padding: 65px 108px;
+    text-align: start;
+    
+  }
+
+  &__picture {
+    width: 28%;
+    height: 100%;
+    object-fit: cover;
+    background-repeat: no-repeat;
+  }
+
+  &__form-container {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+
+  
+}

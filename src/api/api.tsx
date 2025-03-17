@@ -1,0 +1,32 @@
+import axios from 'axios';
+import { LoginData } from '../types/authorization';
+
+const API_URL = "/api";
+
+const apiClient = axios.create ({
+  baseURL: API_URL,
+  headers: {
+
+  }
+
+
+})
+
+const apiRequest = async (method: "GET" | "POST" | "PUT" | "DELETE", endpoint: string, data?:  any): Promise<any> => {
+    try {
+      const response = await apiClient({
+        method,
+        url: endpoint,
+        data,
+      });
+      return response.data;
+    } catch (error) {
+      console.error(`Ошибка при ${method.toUpperCase()} запросе`, error);
+      throw error;
+    }
+  };
+
+  export const userAPI = {
+    logIn: (data :LoginData) => apiRequest("POST", `/v1/auth/staff`, data),
+  };
+
