@@ -1,0 +1,6 @@
+@import "../styles/variables.scss";
+
+%border-gray {
+    border: 1px solid $secondary-color;
+    border-radius: 16px;
+  }

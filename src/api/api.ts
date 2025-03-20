@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { LoginData } from '../types/authorization';
 
-const API_URL = "/api";
+const API_URL = "http://5.35.104.57:8080/api";
 
 const apiClient = axios.create ({
   baseURL: API_URL,

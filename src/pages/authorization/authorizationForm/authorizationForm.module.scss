@@ -1,4 +1,5 @@
 @import "../../../styles/variables.scss";
+@import "../../../styles/extends.scss";
 .authorization-form {
     width: 500px;
     height: 400px;
@@ -7,14 +8,31 @@
     align-items: flex-start;
 
     &__form {
+        margin-top: 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
         width: 100%;
+        gap: 20px;
+        position: relative;
     }
 
     &__input-phone {
+        box-sizing: border-box;
         width: 100%;
         height: 56px;
-        border: 1px solid;
-        border-color: $secondary-color;
-        border-radius: 7px;
+        @extend %border-gray;
+    }
+
+     &__label {
+        position: absolute;
+        top: -25px;
+     }
+
+    &__submit-button {
+        box-sizing: border-box;
+        width: 100%;
+        height: 56px;
+        @extend %border-gray;
     }
 }

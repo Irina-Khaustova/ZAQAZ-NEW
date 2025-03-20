@@ -6,4 +6,3 @@ export const SET_HELPER_TEXT = "SET_HELPER_TEXT";
 export const SET_SHOW_PIN = "SET_SHOW_PIN";
 export const SET_AUTH_ERROR= "SET_ERROR_AUTH";
 export const SET_CODE = "SET_CODE";
-export const SET_ERROR_TEXT = "SET_ERROR_TEXT";
