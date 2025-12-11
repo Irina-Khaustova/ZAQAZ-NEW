@@ -6,17 +6,17 @@ import {
   SET_PHONE_VALUE,
   SET_CODE,
   SET_SHOW_PIN,
-  SET_VALID_PHONE
+  SET_VALID_PHONE,
 } from "./authorizationActions";
 
 export type AuthState = {
   phoneValue: string;
-  isValidPhone: Boolean;
-  phoneError: Boolean;
-  isAuthPin: Boolean;
+  isValidPhone: boolean;
+  phoneError: boolean;
+  isAuthPin: boolean;
   helperText: string;
-  isShowPin: Boolean;
-  isErrorAuth: Boolean;
+  isShowPin: boolean;
+  isErrorAuth: boolean;
   code: string[];
   errorText: string;
   isActiveFormButton: boolean;
@@ -25,11 +25,11 @@ export type AuthState = {
 export type AuthAction =
   | { type: typeof SET_PHONE_VALUE; payload: string }
   | { type: typeof SET_VALID_PHONE; payload: boolean }
-  | {type: typeof SET_AUTH_PIN; payload: boolean}
-  | {type: typeof SET_AUTH_ERROR; payload: boolean}
-  | {type: typeof SET_HELPER_TEXT; payload: string}
-  | {type: typeof SET_CODE; payload: string[]}
-  | {type: typeof SET_SHOW_PIN; payload: boolean}
+  | { type: typeof SET_AUTH_PIN; payload: boolean }
+  | { type: typeof SET_AUTH_ERROR; payload: boolean }
+  | { type: typeof SET_HELPER_TEXT; payload: string }
+  | { type: typeof SET_CODE; payload: {index: number, value: string} }
+  | { type: typeof SET_SHOW_PIN; payload: boolean }
   | { type: typeof SET_PHONE_ERROR };
 
 export const initialState: AuthState = {
@@ -45,15 +45,32 @@ export const initialState: AuthState = {
   isActiveFormButton: false,
 };
 
-export const authReducer = (state: AuthState, action: AuthAction):AuthState => {
-    switch (action.type) {
-        case SET_PHONE_VALUE:
-          return { ...state, phoneValue: action.payload }; 
-        case SET_VALID_PHONE:
-          return { ...state, isValidPhone: action.payload }; 
-        case SET_PHONE_ERROR:
-          return { ...state, helperText: "Пожалуйста, введите корректный номер телефона", isValidPhone: false }; 
-        default:
-          return state; 
-      }
-}
+export const authReducer = (
+  state: AuthState,
+  action: AuthAction
+): AuthState => {
+  switch (action.type) {
+    case SET_PHONE_VALUE:
+      return { ...state, phoneValue: action.payload };
+    case SET_VALID_PHONE:
+      return { ...state, isValidPhone: action.payload };
+    case SET_PHONE_ERROR:
+      return {
+        ...state,
+        helperText: "Пожалуйста, введите корректный номер телефона",
+        isValidPhone: false,
+      };
+    case SET_SHOW_PIN:
+      const newState = { ...state, isShowPin: action.payload };
+      return newState;
+      case SET_CODE:
+        const updatedCode = [...state.code];
+        updatedCode[action.payload.index] = action.payload.value;
+        return {
+          ...state,
+          code: updatedCode,
+        };
+    default:
+      return state;
+  }
+};

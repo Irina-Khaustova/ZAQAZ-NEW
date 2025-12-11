@@ -4,3 +4,7 @@
     border: 1px solid $secondary-color;
     border-radius: 16px;
   }
+
+%button-active {
+  background-color: $primary-color;
+}

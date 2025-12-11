@@ -1,0 +1,41 @@
+@import "../../../styles/variables.scss";
+@import "../../../styles/extends.scss";
+.authPIN-form {
+    width: 440px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    &__form {
+        margin-top: 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        gap: 20px;
+        position: relative;
+    }
+
+    &__input-container {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    &__input {
+        width: 104px;
+        height: 56px;
+        box-sizing: border-box;
+        @extend %border-gray;
+        text-align: center;
+    }
+
+    &__submit-button {
+        box-sizing: border-box;
+        width: 100%;
+        height: 56px;
+        @extend %border-gray;
+    }
+}

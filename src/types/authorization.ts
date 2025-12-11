@@ -1,6 +1,6 @@
 export interface LoginData {
     phone: string;
-    code: string;
+    code: string[];
   }
 
 export {};
